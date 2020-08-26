@@ -12,63 +12,68 @@ const authService = require('./services/auth-service')
 let MainWindow
 
 async function showWindow() {
-	try {
-		console.log('Trying to refresh tokens....')
-		await authService.refreshTokens()
-		console.log('Creating Main Window....')
-		MainWindow = await CreateMainWindow.createMainWindow(isDev)
-	} catch (err) {
-		console.warn('Cannot refresh tokens so #Creating Auth Window....')
-		console.error(err)
-		createAuthWindow()
-	}
+  try {
+    console.log('Trying to refresh tokens....')
+    await authService.refreshTokens()
+    console.log('Creating Main Window....')
+    MainWindow = await CreateMainWindow.createMainWindow(isDev)
+  } catch (err) {
+    console.warn('Cannot refresh tokens so #Creating Auth Window....')
+    console.error(err)
+    createAuthWindow()
+  }
 }
 
 app.on('ready', () => {
-	showWindow()
+  showWindow()
 
-	const mainMenu = Menu.buildFromTemplate(menu)
-	Menu.setApplicationMenu(mainMenu)
+  const mainMenu = Menu.buildFromTemplate(menu)
+  Menu.setApplicationMenu(mainMenu)
 })
 
 const menu = [
-	...(isMac ? [{ role: 'appMenu' }] : []),
-	{
-		role: 'fileMenu',
-	},
-	...(isDev
-		? [
-				{
-					label: 'Developer',
-					submenu: [{ role: 'reload' }, { role: 'forcereload' }, { type: 'separator' }, { role: 'toggledevtools' }],
-				},
-		  ]
-		: []),
+  ...(isMac ? [{ role: 'appMenu' }] : []),
+  {
+    role: 'fileMenu',
+  },
+  ...(isDev
+    ? [
+        {
+          label: 'Developer',
+          submenu: [
+            { role: 'reload' },
+            { role: 'forcereload' },
+            { type: 'separator' },
+            { role: 'toggledevtools' },
+          ],
+        },
+      ]
+    : []),
 ]
 
 ipcMain.on('application:logout', async (event, flag) => {
-	console.log("In main IPC 'application:logout'")
-	if (MainWindow) {
-		await authService.logout()
-		app.isQuitting = true
-		app.quit()
-	}
+  console.log("In main IPC 'application:logout'")
+  if (MainWindow) {
+    await authService.logout()
+    app.isQuitting = true
+    app.quit()
+  }
 })
 
 app.on('authenticated', async () => {
-	MainWindow = await CreateMainWindow.createMainWindow(isDev)
+  MainWindow = await CreateMainWindow.createMainWindow(isDev)
 })
 
 app.on('window-all-closed', () => {
-	if (!isMac) {
-		app.quit()
-	}
+  if (!isMac) {
+    app.quit()
+  }
 })
 
 app.on('activate', async () => {
-	if (BrowserWindow.getAllWindows().length === 0) {
-		MainWindow = await CreateMainWindow.createMainWindow(isDev)
-	}
+  if (BrowserWindow.getAllWindows().length === 0) {
+    MainWindow = await CreateMainWindow.createMainWindow(isDev)
+  }
 })
 
 app.allowRendererProcessReuse = true

@@ -111,3 +111,4 @@ Electron.code-workspace
 **/release-builds/**
 **/node_modules/**
 **/secrets/**
+package-lock.json
