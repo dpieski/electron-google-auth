@@ -112,3 +112,4 @@ Electron.code-workspace
 **/node_modules/**
 **/secrets/**
 package-lock.json
+package-lock.json
