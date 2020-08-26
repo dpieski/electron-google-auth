@@ -1,4 +1,5 @@
 # electron-google-auth
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 This is an Electron Template for Google Authentication. It also implements contextIsolation - there are no errors or notices in the developer pane. 
 
