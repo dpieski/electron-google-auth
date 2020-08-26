@@ -1,6 +1,8 @@
 # electron-google-auth
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 ![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/dpieski/electron-google-auth)
+![GitHub repo size](https://img.shields.io/github/repo-size/dpieski/electron-google-auth)
+![Last Commit](https://badgen.net/github/last-commit/dpieski/electron-google-auth)
 
 This is an Electron Template for Google Authentication. It also implements contextIsolation - there are no errors or notices in the developer pane. 
 
