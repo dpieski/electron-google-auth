@@ -1,5 +1,5 @@
 {
-    "name": "electron-starter",
+    "name": "electron-google-auth",
     "productName": "GSuite Authentication Starter",
     "version": "1.0.0",
     "description": "Simple starter for Electron GSuite apps",
@@ -17,9 +17,9 @@
     "author": "Andrew Piechocki",
     "license": "GNU GPLv3",
     "devDependencies": {
-        "electron": "^9.2.1",
-        "electron-packager": "^14.2.1",
-        "nodemon": "^2.0.3"
+        "electron": "^10.0.0",
+        "electron-packager": "^15.1.0",
+        "nodemon": "^2.0.4"
     },
     "dependencies": {
         "fs": "0.0.1-security",
