@@ -102,3 +102,12 @@ dist
 
 # TernJS port file
 .tern-port
+
+
+# VSCode Settings
+.vscode/
+Electron.code-workspace
+
+**/release-builds/**
+**/node_modules/**
+**/secrets/**
